@@ -10,11 +10,9 @@ end
 #   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  debugger
-  #page.body =~ /e1.*e2/
-  #  ensure that that e1 occurs before e2.
-  #  page.body is the entire content of the page as a string.
-  flunk "Unimplemented"
+  unless page.body =~ /#{e1}.*#{e2}/m
+    flunk "#{e1} not before #{e2}"
+  end
 end
 
 # Make it easier to express checking or unchecking several boxes at once
